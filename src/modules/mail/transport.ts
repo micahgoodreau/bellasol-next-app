@@ -15,6 +15,7 @@ export const getTransport = async () => {
   // const { user, pass } = await nodemailer.createTestAccount();
 
   transport = nodemailer.createTransport({
+    name: 'www.globalbipro.com',
     host,
     port: 465,
     secure: process.env.NODE_ENV === "production",
