@@ -4,7 +4,7 @@
  */
 
 
-import type { Context } from "./../types/Context"
+import type { Context } from "./../src/types/Context"
 
 
 
@@ -14,6 +14,11 @@ declare global {
 }
 
 export interface NexusGenInputs {
+  loginCredentials: { // input type
+    email: string; // String!
+    password: string; // String!
+    username: string; // String!
+  }
 }
 
 export interface NexusGenEnums {
@@ -28,7 +33,19 @@ export interface NexusGenScalars {
 }
 
 export interface NexusGenObjects {
+  Mutation: {};
   Query: {};
+  implicitLoginResponse: { // root type
+    loggedIn: boolean; // Boolean!
+    username?: string | null; // String
+  }
+  loginResponse: { // root type
+    message?: string | null; // String
+    username?: string | null; // String
+  }
+  registerResponse: { // root type
+    message: string; // String!
+  }
 }
 
 export interface NexusGenInterfaces {
@@ -42,18 +59,58 @@ export type NexusGenRootTypes = NexusGenObjects
 export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
 
 export interface NexusGenFieldTypes {
+  Mutation: { // field return type
+    createAccount: NexusGenRootTypes['registerResponse'] | null; // registerResponse
+    login: NexusGenRootTypes['loginResponse'] | null; // loginResponse
+  }
   Query: { // field return type
+    implicitLogin: NexusGenRootTypes['implicitLoginResponse'] | null; // implicitLoginResponse
     test: boolean | null; // Boolean
+  }
+  implicitLoginResponse: { // field return type
+    loggedIn: boolean; // Boolean!
+    username: string | null; // String
+  }
+  loginResponse: { // field return type
+    message: string | null; // String
+    username: string | null; // String
+  }
+  registerResponse: { // field return type
+    message: string; // String!
   }
 }
 
 export interface NexusGenFieldTypeNames {
+  Mutation: { // field return type name
+    createAccount: 'registerResponse'
+    login: 'loginResponse'
+  }
   Query: { // field return type name
+    implicitLogin: 'implicitLoginResponse'
     test: 'Boolean'
+  }
+  implicitLoginResponse: { // field return type name
+    loggedIn: 'Boolean'
+    username: 'String'
+  }
+  loginResponse: { // field return type name
+    message: 'String'
+    username: 'String'
+  }
+  registerResponse: { // field return type name
+    message: 'String'
   }
 }
 
 export interface NexusGenArgTypes {
+  Mutation: {
+    createAccount: { // args
+      credentials: NexusGenInputs['loginCredentials']; // loginCredentials!
+    }
+    login: { // args
+      credentials: NexusGenInputs['loginCredentials']; // loginCredentials!
+    }
+  }
   Query: {
     test: { // args
       bool: boolean; // Boolean!
@@ -69,7 +126,7 @@ export interface NexusGenTypeInterfaces {
 
 export type NexusGenObjectNames = keyof NexusGenObjects;
 
-export type NexusGenInputNames = never;
+export type NexusGenInputNames = keyof NexusGenInputs;
 
 export type NexusGenEnumNames = never;
 

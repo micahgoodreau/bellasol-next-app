@@ -2,6 +2,32 @@
 ### Do not make changes to this file directly
 
 
+type Mutation {
+  createAccount(credentials: loginCredentials!): registerResponse
+  login(credentials: loginCredentials!): loginResponse
+}
+
 type Query {
+  implicitLogin: implicitLoginResponse
   test(bool: Boolean!): Boolean
+}
+
+type implicitLoginResponse {
+  loggedIn: Boolean!
+  username: String
+}
+
+input loginCredentials {
+  email: String!
+  password: String!
+  username: String!
+}
+
+type loginResponse {
+  message: String
+  username: String
+}
+
+type registerResponse {
+  message: String!
 }
