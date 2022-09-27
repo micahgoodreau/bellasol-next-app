@@ -26,8 +26,14 @@ function createIsomorphicLink(ctx?: SchemaContext) {
       context: ctx,
     });
   }
+  
+  const uri = `${
+    process.env.VERCEL_URL ?? "http://localhost:3000"
+  }/api/graphql`
+  uri.replace('undefined/', '');
+  
   const httpLink = new HttpLink({
-    uri: `${process.env.VERCEL_URL}/api/graphql`,
+    uri,
     credentials: "same-origin",
   });
   return from([httpLink]);
