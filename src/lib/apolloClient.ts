@@ -14,6 +14,7 @@ import {
   
   let apolloClient: ApolloClient<NormalizedCacheObject> | null = null;
   
+  const gqluri =  process.env.GRAPHQL_SERVER_URL || "http://localhost:3000/api/graphql";
   type SchemaContext =
     | SchemaLink.ResolverContext
     | SchemaLink.ResolverContextFunction;
@@ -27,7 +28,7 @@ import {
       });
     }
     const httpLink = new HttpLink({
-      uri: process.env.GRAPHQL_SERVER_URL || "http://localhost:3000/api/graphql",
+      uri: gqluri,
       credentials: "same-origin",
     });
     return from([httpLink]);
