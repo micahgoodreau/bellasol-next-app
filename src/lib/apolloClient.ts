@@ -14,7 +14,7 @@ import {
   
   let apolloClient: ApolloClient<NormalizedCacheObject> | null = null;
   
-  const gqluri =  process.env.GRAPHQL_SERVER_URL || "http://localhost:3000/api/graphql";
+  const gqluri =  process.env.GRAPHQL_SERVER_URL;
   type SchemaContext =
     | SchemaLink.ResolverContext
     | SchemaLink.ResolverContextFunction;
