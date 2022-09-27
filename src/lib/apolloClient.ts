@@ -26,6 +26,7 @@ function createIsomorphicLink(ctx?: SchemaContext) {
       context: ctx,
     });
   }
+  console.log(process.env.NEXT_PUBLIC_VERCEL_URL)
   const httpLink = new HttpLink({
     uri: `${
       process.env.NEXT_PUBLIC_VERCEL_URL ?? "http://localhost:3000"
