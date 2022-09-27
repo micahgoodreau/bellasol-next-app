@@ -26,13 +26,10 @@ function createIsomorphicLink(ctx?: SchemaContext) {
       context: ctx,
     });
   }
-  
-  const uri = `${
-    process.env.NEXT_PUBLIC_VERCEL_URL ?? "http://localhost:3000"
-  }/api/graphql`;
-  
   const httpLink = new HttpLink({
-    uri,
+    uri: `${
+      process.env.NEXT_PUBLIC_VERCEL_URL ?? "http://localhost:3000"
+    }/api/graphql`,
     credentials: "same-origin",
   });
   return from([httpLink]);
