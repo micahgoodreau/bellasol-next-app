@@ -44,6 +44,7 @@ export const createAccount: FieldResolver<
     email: credentials.email,
     uuid: key,
   });
+  console.log(credentials.email, key)
   transport.sendMail(mailOptions).then(info => {
     console.log(`Message id: ${info.messageId}`);
     console.log(`URL: ${nodemailer.getTestMessageUrl(info)}`);

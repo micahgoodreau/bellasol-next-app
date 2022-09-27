@@ -16,7 +16,7 @@ if (!process.env.SERVER_URL) {
 export const generateVerificationEmail = (
   credentials: EmailInput
 ): Mail.Options => ({
-  from: "Test App <test-noreply@app.com>",
+  from: '<micah@globalbipro.com>',
   to: credentials.email,
   subject: `Welcome to TestApp, ${credentials.username}!`,
   html: `<h1>Verify your account!</h1>\
