@@ -28,7 +28,7 @@ function createIsomorphicLink(ctx?: SchemaContext) {
   }
   
   const uri = `${
-    process.env.VERCEL_URL ?? "http://localhost:3000"
+    process.env.NEXT_PUBLIC_VERCEL_URL ?? "http://localhost:3000"
   }/api/graphql`
   uri.replace('undefined/', '');
   
