@@ -26,9 +26,9 @@ function createIsomorphicLink(ctx?: SchemaContext) {
       context: ctx,
     });
   }
-  const uri = `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/graphql`
+  
   const httpLink = new HttpLink({
-    uri,
+    uri: "https://bellasol.vercel.app/api/graphql",
     credentials: "same-origin",
   });
   return from([httpLink]);
