@@ -26,9 +26,9 @@ function createIsomorphicLink(ctx?: SchemaContext) {
       context: ctx,
     });
   }
-  console.log(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/graphql`)
+  const uri = `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/graphql`
   const httpLink = new HttpLink({
-    uri: `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/graphql`,
+    uri,
     credentials: "same-origin",
   });
   return from([httpLink]);
